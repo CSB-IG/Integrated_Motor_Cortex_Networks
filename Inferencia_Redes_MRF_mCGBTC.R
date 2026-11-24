@@ -2,11 +2,9 @@
 #  OBJETIVO 8  |  f.1.8  Inferencia de redes probabilísticas a partir de
 #  registros neuronales y su relación con la organización estructural del
 #  circuito motor corteza-ganglios basales-tálamo-corteza (mCGBTC)
+# corrida de prueba con datos simulados
 #
-#  Propuesta de implementación en R.  Uso:  source("objetivo8_redes_MRF_mCGBTC.R",
-#  encoding = "UTF-8");  demo_objetivo8()   # corrida de prueba con datos simulados
-#
-#  FLUJO (corresponde párrafo por párrafo a f.1.8):
+#  FLUJO (corresponde párrafo por párrafo a f.1.8 del proyecto como lo sometimos, checar si hay algo que cambiar):
 #   1. Binning de espigas -> matriz binaria (ensayos x bins) por sesión.
 #   2. MRF binario de pares (modelo de Ising) por sesión, estimado con regresión
 #      logística L1 nodo-a-nodo (Ravikumar et al. 2010), selección de lambda por
@@ -28,6 +26,7 @@
 #  etapas.  Se comparan (a) métricas topológicas y (b) matrices acoplamiento
 #  AGREGADAS POR PARCELA, que sí están alineadas entre sesiones y con la
 #  tractografía.  Cada neurona debe asignarse a una parcela (coordenadas de f.1.5).
+# Checar con Hugo si eso es lo que queremos
 ###############################################################################
 
 suppressPackageStartupMessages({
@@ -65,7 +64,7 @@ cfg_default <- function(...) {
 }
 
 ###############################################################################
-# FORMATO DE ENTRADA
+# FORMATO DE ENTRADA (Checar con Hugo si esas son las salidas de sus experimentos y si no ajustar fomatos.
 #   data   : lista de sesiones; cada sesión es una lista con
 #              $session (id), $animal, $stage (1..10),
 #              $neu : data.frame(neuron_id, area, parcel)
